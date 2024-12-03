@@ -1,0 +1,204 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.admin-panel {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #246757;
+  color: #ecf0f1;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.sidebar ul {
+  list-style-type: none;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+/* Sidebar Menu Links */
+.sidebar ul li a {
+  text-decoration: none;
+  color: #ecf0f1;
+  display: flex;
+  align-items: center; /* Vertically align icon and text */
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.sidebar ul li a i {
+  margin-right: 15px; /* Add space between the icon and the name */
+  font-size: 1.2rem; /* Adjust icon size if necessary */
+}
+
+.sidebar ul li a:hover {
+  background-color: #090a0a;
+}
+
+
+/* Dropdown */
+.dropdown-container {
+  display: none;
+  list-style: none;
+  margin-left: 20px;
+}
+
+.dropdown-container li {
+  margin: 5px 0;
+}
+
+.dropdown-container li a {
+  padding: 5px 10px;
+  font-size: 0.9rem;
+}
+
+.dropdown-btn .dropdown-arrow {
+  margin-left: auto;
+}
+
+.dropdown-btn.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Main Content */
+.content {
+  margin-left: 250px; /* Adjust for the fixed sidebar */
+  width: calc(100% - 250px); /* Fill the remaining space */
+  padding: 20px;
+  background-color: #ecf0f1;
+  min-height: 100vh; /* Allow the content area to expand */
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Profile Container */
+/* .profile-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto; 
+} */
+
+/* Profile Header */
+h1 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form Elements */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.profile-form input,
+.profile-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.profile-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Submit Button */
+.profile-form button {
+  width: 100%;
+  background-color: #84fab0;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profile-form button:hover {
+  background-color: #56c491;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Adjust Sidebar for small screens */
+  .sidebar {
+    width: 200px;
+  }
+
+  /* Adjust Content for small screens */
+  .content {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+  }
+
+  /* Make profile container and form full width */
+  .profile-container {
+    max-width: 100%;
+    margin: 20px;
+  }
+
+  /* Adjust Form Elements for Small Screens */
+  .profile-form input,
+  .profile-form textarea,
+  .profile-form button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjust layout for very small screens */
+  .sidebar {
+    width: 150px;
+  }
+
+  .content {
+    margin-left: 150px;
+    width: calc(100% - 150px);
+  }
+
+  .profile-container {
+    margin: 10px;
+  }
+}

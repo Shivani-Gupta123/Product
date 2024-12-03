@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee List with Sidebar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      background-color: #f5f5f5;
+    }
+
+
+    /* Main Container */
+    .main-content {
+      margin-left: 270px; /* Space for the sidebar */
+      width: calc(100% - 270px);
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .btn-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn-group button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    .btn-group button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Responsive Sidebar */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+      }
+
+      .main-content {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .sidebar {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+      }
+
+      .main-content {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="admin-panel">
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <h2>Super Admin</h2>
+          <ul>
+            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            <li>
+              <a href="javascript:void(0);" class="dropdown-btn">
+                <i class="fas fa-box"></i> Product <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </a>
+              <ul class="dropdown-container">
+                <li><a href="upload.html"><i class="fas fa-upload"></i> Upload</a></li>
+                <li><a href="running.html"><i class="fas fa-running"></i> Running</a></li>
+              </ul>
+            </li>
+            <li><a href="employee.html"><i class="fas fa-users"></i> Employee</a></li>
+            <li><a href="users.html"><i class="fas fa-user-friends"></i> User</a></li>
+            <li><a href="branch.html"><i class="fas fa-building"></i> Branch</a></li>
+            <li><a href="winner.html"><i class="fas fa-trophy"></i> Winner</a></li>
+            <li><a href="accountdetail.html"><i class="fas fa-wallet"></i> Account Detail</a></li>
+            <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+          </ul>
+        </div>
+
+
+  <div class="main-content">
+    <div class="container">
+      <h2>Employee Details</h2>
+      <form>
+        <div class="form-group">
+          <label for="employeeName">Employee Name</label>
+          <input type="text" id="employeeName" placeholder="Enter Employee Name" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" placeholder="Enter Address" required>
+        </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" id="date" required>
+        </div>
+        <div class="form-group">
+          <label for="employeeList">Select Employee</label>
+          <select id="employeeList" required></select>
+          <div class="btn-group">
+            <button type="button" id="prevButton">Previous</button>
+            <button type="button" id="nextButton">Next</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const employees = Array.from({ length: 100 }, (_, i) => `Employee ${i + 1}`);
+    const dropdown = document.getElementById("employeeList");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+    let currentPage = 0;
+    const itemsPerPage = 20;
+
+    
+    function renderDropdown() {
+      dropdown.innerHTML = "";
+      const start = currentPage * itemsPerPage;
+      const end = start + itemsPerPage;
+      const currentItems = employees.slice(start, end);
+
+      currentItems.forEach((employee) => {
+        const option = document.createElement("option");
+        option.value = employee;
+        option.textContent = employee;
+        dropdown.appendChild(option);
+      });
+
+      
+      prevButton.disabled = currentPage === 0;
+      nextButton.disabled = end >= employees.length;
+    }
+
+    
+    prevButton.addEventListener("click", () => {
+      if (currentPage > 0) {
+        currentPage--;
+        renderDropdown();
+      }
+    });
+
+    nextButton.addEventListener("click", () => {
+      if ((currentPage + 1) * itemsPerPage < employees.length) {
+        currentPage++;
+        renderDropdown();
+      }
+    });
+
+    // Initial render
+    renderDropdown();
+
+    document.querySelectorAll('.dropdown-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const dropdown = btn.nextElementSibling;
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    btn.classList.toggle('active');
+  });
+});
+  </script>
+</body>
+</html>
