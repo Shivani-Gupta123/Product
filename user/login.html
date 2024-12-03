@@ -6,6 +6,7 @@
   <title>Login Page</title>
   
   <style>
+  
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -17,6 +18,7 @@ body {
   background: linear-gradient(to right, #84fab0, #8fd3f4);
 }
 
+
 .login {
   display: flex;
   justify-content: center;
@@ -24,6 +26,7 @@ body {
   width: 100%;
   height: 100%;
 }
+
 
 .login-container {
   background: #ffffff;
@@ -34,6 +37,7 @@ body {
   max-width: 400px;
 }
 
+
 .login-container h2 {
   text-align: center;
   margin-bottom: 20px;
@@ -41,9 +45,11 @@ body {
   color: #0d0d0d;
 }
 
+
 .form-group {
   margin-bottom: 15px;
 }
+
 
 label {
   display: block;
@@ -105,7 +111,7 @@ button:hover {
   color: #56c491;
 }
 
-
+/* Responsive Design */
 @media (max-width: 768px) {
   .login-container {
     padding: 20px;
@@ -127,7 +133,7 @@ button:hover {
         <div class="login-container">
             <form id="loginForm" action="profile.html" method="POST">
               <h2>Login</h2>
-        
+             
               <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -141,16 +147,21 @@ button:hover {
               <div class="form-group">
                 <button type="submit">Login</button>
               </div>
-      
-              <div class="form-group">
+        
+              <!-- <div class="form-group">
                 <p class="links">
                   <a href="#" class="forgot-password">Forgot Password?</a> |
                   <a href="../registration.html" class="register">Register</a>
                 </p>
-              </div>
+              </div> -->
             </form>
           </div>
     </div>
-
+<script>
+      document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      window.location.href = "profile.html"; 
+    });
+</script>
 </body>
 </html>

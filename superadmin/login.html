@@ -148,15 +148,20 @@ button:hover {
                 <button type="submit">Login</button>
               </div>
         
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <p class="links">
                   <a href="#" class="forgot-password">Forgot Password?</a> |
                   <a href="../registration.html" class="register">Register</a>
                 </p>
-              </div>
+              </div> -->
             </form>
           </div>
     </div>
-
+<script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+      window.location.href = "profile.html";
+    });
+</script>
 </body>
 </html>
