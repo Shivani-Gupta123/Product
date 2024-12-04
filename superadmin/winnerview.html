@@ -20,6 +20,7 @@
     }
 
     .profile-section {
+    text-align: center;
       background: white;
       padding: 20px;
       border-radius: 8px;
@@ -96,42 +97,50 @@
 <body>
   <div class="admin-panel">
     <div class="sidebar">
-      <h2>User</h2>
+      <h2>Super Admin</h2>
       <ul>
         <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
-        <li><a href="myorder.html"><i class="fas fa-users"></i> My Order</a></li>
-        <li><a href="kyc.html"><i class="fas fa-user-friends"></i> KYC</a></li>
-        <li><a href="messages.html"><i class="fas fa-building"></i> Messages</a></li>
+        <li>
+          <a href="javascript:void(0);" class="dropdown-btn">
+            <i class="fas fa-box"></i> Product <i class="fas fa-chevron-down dropdown-arrow"></i>
+          </a>
+          <ul class="dropdown-container">
+            <li><a href="upload.html"><i class="fas fa-upload"></i> Upload</a></li>
+            <li><a href="running.html"><i class="fas fa-running"></i> Running</a></li>
+          </ul>
+        </li>
+        <li><a href="employee.html"><i class="fas fa-users"></i> Employee</a></li>
+        <li><a href="users.html"><i class="fas fa-user-friends"></i> User</a></li>
+        <li><a href="branch.html"><i class="fas fa-building"></i> Branch</a></li>
+        <li><a href="winner.html"><i class="fas fa-trophy"></i> Winner</a></li>
+        <li><a href="accountdetail.html"><i class="fas fa-wallet"></i> Account Detail</a></li>
         <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
       </ul>
     </div>
-  <!-- Content -->
+
+
   <div class="content">
     <div class="profile-section">
-      <h3>Profile Details</h3>
+      <h3>Winner Details</h3>
       <div class="form-group">
-        <label for="profileImage">Image</label>
-        <input type="file" id="profileImage">
+       <img src="" alt="image">
       </div>
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" placeholder="Enter Name">
+        <h3>Saurabh</h3>
       </div>
       <div class="form-group">
-        <label for="rate">Rate of Product</label>
-        <input type="number" id="rate" placeholder="Enter Rate">
+        <p>20000</p>
       </div>
       <div class="form-group">
-        <label for="pieces">Pieces</label>
-        <input type="number" id="pieces" placeholder="Enter Pieces">
+        <p>4</p>
       </div>
       <div class="form-group">
-        <label for="winningDate">Winning Date</label>
-        <input type="date" id="winningDate">
+        <p>20/12/24</p>
       </div>
-      <button class="submit-btn" id="submitDetails">Submit</button>
+      
     </div>
 
+ 
     <div class="table-section">
       <h3>Submitted Details</h3>
       <table id="detailsTable">
@@ -146,6 +155,25 @@
             <th>Details</th>
           </tr>
         </thead>
+        <tbody>
+            <tr>
+              <td>1.</td>
+              <td>Saurabh</td>
+              <td>XYZ</td>
+              <td>9765444578</td>
+              <td></td>
+              <td>Gorakhpur</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>2.</td>
+              <td>Shubham</td>
+              <td>VGH</td>
+              <td>9765667782</td>
+              <td></td>
+              <td>Kanpur</td>
+              <td></td>
+          </tbody>
       </table>
     </div>
   </div>
